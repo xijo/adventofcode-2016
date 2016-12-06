@@ -44,15 +44,14 @@ defmodule Day04.Room do
   # Rotate a given integer value, which represents a char by +shift+ counts
   # through the alphabet.
   # Return empty string for any non alphabet members.
+  def rotate(?-, _), do: 32
+
   def rotate(c, shift) do
     index = Enum.find_index(@alphabet, fn(a) -> a == c end)
-    if index == nil do
-      32
-    else
-      new_index = index + rem(shift, 26)
-      Enum.at(@alphabet, new_index)
-    end
+    new_index = index + rem(shift, 26)
+    Enum.at(@alphabet, new_index)
   end
+
 end
 
 # --- Part I ---
